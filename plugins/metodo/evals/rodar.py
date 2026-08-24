@@ -48,7 +48,7 @@ def rodar_claude(prompt: str, modelo: str, max_turns: int, arquivos: dict) -> di
             "--strict-mcp-config", "--mcp-config", '{"mcpServers":{}}',
         ]
         proc = subprocess.run(cmd, cwd=tmp, capture_output=True, text=True, timeout=300)
-        skills, ferramentas, custo, erro, truncado = [], [], 0.0, "", False
+        skills, ferramentas, custo, erro, truncado, viu_result = [], [], 0.0, "", False, False
         for linha in proc.stdout.splitlines():
             linha = linha.strip()
             if not linha.startswith("{"):
@@ -65,14 +65,18 @@ def rodar_claude(prompt: str, modelo: str, max_turns: int, arquivos: dict) -> di
                             skills.append(str(c.get("input", {}).get("skill", "")))
             elif m.get("type") == "result":
                 custo = m.get("total_cost_usd", 0.0) or 0.0
+                viu_result = True
                 sub = str(m.get("subtype", ""))
                 if m.get("is_error") and sub != "error_max_turns":
                     erro = sub or "erro"
                 truncado = sub == "error_max_turns"
-        if not erro and proc.returncode != 0:
+        # Código de saída != 0 com `result` presente é esperado: a porta do Stop
+        # do próprio plugin bloqueia o encerramento com lacuna aberta.
+        if not erro and proc.returncode != 0 and not viu_result:
             erro = (proc.stderr or "").strip()[-200:] or f"exit={proc.returncode}"
+        stderr_fim = (proc.stderr or "").strip()[-300:]
         return {"skills": skills, "ferramentas": ferramentas, "custo": custo,
-                "erro": erro, "truncado": truncado}
+                "erro": erro, "truncado": truncado, "stderr": stderr_fim}
     except subprocess.TimeoutExpired:
         return {"skills": [], "ferramentas": [], "custo": 0.0, "erro": "timeout", "truncado": False}
     finally:
@@ -117,7 +121,7 @@ def julgar(caso: dict, exec_: dict) -> tuple[bool, str]:
 def main() -> int:
     p = argparse.ArgumentParser(description=__doc__,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument("--caso", default="*", help="glob de id")
+    p.add_argument("--caso", default="*", help="glob de id; vários separados por vírgula")
     p.add_argument("--tipo", help="positivo | discriminacao | negativo")
     p.add_argument("--modelo", default="sonnet")
     p.add_argument("--runs", type=int, default=2)
@@ -130,7 +134,8 @@ def main() -> int:
 
     import fnmatch
     casos = json.loads(CASOS.read_text(encoding="utf-8"))["casos"]
-    casos = [c for c in casos if fnmatch.fnmatch(c["id"], a.caso)]
+    padroes = [g.strip() for g in a.caso.split(",") if g.strip()]
+    casos = [c for c in casos if any(fnmatch.fnmatch(c["id"], g) for g in padroes)]
     if a.tipo:
         casos = [c for c in casos if c["tipo"] == a.tipo]
     if not casos:

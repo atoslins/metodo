@@ -1,6 +1,6 @@
 ---
 name: executar-completo
-description: Protocolo para aplicar uma solução inteira, sem deixar pela metade e sem pendência silenciosa. Use SEMPRE que for implementar um plano aprovado, aplicar uma correção em vários lugares, migrar, refatorar em série, integrar um fornecedor, ou executar uma tarefa com várias partes ("faça A, B e C"). Use também antes de dizer "pronto", "concluído", "implementado", "feito", e sempre que aparecer no meio do caminho uma segunda coisa a consertar. Dispare com "aplique", "implemente", "faça em todos", "corrija isso em todo lugar", "vamos executar o plano", "finalize".
+description: Protocolo para aplicar uma solução inteira, sem deixar pela metade e sem pendência silenciosa. Use ANTES da primeira edição sempre que a tarefa tiver mais de um lugar, mais de uma parte ou mais de uma camada: implementar um plano aprovado, aplicar uma correção em vários lugares, migrar, refatorar em série, integrar um fornecedor, ou executar uma lista numerada ("(1) schema, (2) serviço, (3) tela"). Use também ANTES de dizer "pronto", "concluído", "implementado", "feito", e sempre que aparecer no meio do caminho uma segunda coisa a consertar. Dispare com "aplique", "implemente", "faça em todos", "corrija isso em todo lugar", "vamos executar o plano", "comece", "finalize", "pode concluir".
 ---
 
 # Executar completo — nada pela metade

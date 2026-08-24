@@ -63,6 +63,23 @@ fecha item — auto-verificação de agente é sistematicamente otimista.
   exigindo fechar com prova, parar com motivo ou declarar como não entregue.
   Desligar: `METODO_PORTA_FINAL=0`.
 
+## Gatilho, medido
+
+As skills abrem quando precisam e ficam quietas quando não precisam — 17 casos
+em `plugins/metodo/evals`, medidos em 24/08/2026:
+
+| Rodada | Modelo | Execuções | Placar |
+|---|---|---|---|
+| Suíte completa | `sonnet` | 51 | 50/51 |
+| Amostra-âncora | `opus` | 12 | 12/12 |
+
+```bash
+cd plugins/metodo/evals && ./rodar.py --runs 3
+```
+
+Números, defeitos que a medição achou e limites em
+[`evals/RESULTADOS.md`](plugins/metodo/evals/RESULTADOS.md).
+
 ## Documentação
 
 - [`plugins/metodo/docs/PORQUE.md`](plugins/metodo/docs/PORQUE.md) — o caso real que originou o plugin e os quatro modos de falha.

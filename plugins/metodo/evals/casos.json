@@ -111,16 +111,17 @@
       "id": "executar-antes-de-fechar",
       "tipo": "positivo",
       "prompt": "Apliquei a normalização de nome em a.js e b.js conforme combinamos, e escrevi o teste. Pode considerar concluído e me mandar o resumo?",
-      "espera": [
-        "executar-completo"
-      ],
-      "nota": "momento de declarar pronto. O diretório tem um terceiro arquivo NÃO tratado (c.js) e um TODO — a varredura final existe para achar isso. Sem os arquivos o caso era irreal: em diretório vazio não há entrega para fechar.",
+      "nota": "momento de declarar pronto; o diretório tem um terceiro arquivo NÃO tratado (c.js) e um TODO. Medido em 24/08: sonnet abre '/metodo:fechar' 3/3 e 'executar-completo' 1/3 — 'fechar' É a varredura final da skill, então conta. O que a suíte proíbe é carimbar 'concluído' sem varredura nenhuma.",
       "arquivos": {
         "a.js": "const igual = norm(nome) === norm(outro);\n",
         "b.js": "const igual = norm(nome) === norm(outro);\n",
         "c.js": "if (nome === outro) { ok() }\n",
         "teste.js": "// TODO: cobrir acentos\n"
-      }
+      },
+      "espera_qualquer": [
+        "executar-completo",
+        "fechar"
+      ]
     },
     {
       "id": "discrimina-bug-stacktrace",
