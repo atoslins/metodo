@@ -1,0 +1,27 @@
+{
+  "description": "metodo — mantém o livro de lacunas vivo no contexto (UserPromptSubmit) e impede encerrar em silêncio com pendência bloqueante (Stop).",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/lembrete.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/porta_final.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
