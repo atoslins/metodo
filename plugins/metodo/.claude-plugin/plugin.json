@@ -1,9 +1,16 @@
 {
   "name": "metodo",
   "version": "0.1.0",
-  "description": "Protocolos de resolucao sistematica: destravar impasses, explorar opcoes sem fechar cedo, e executar sem deixar pela metade.",
-  "author": { "name": "Atos Lins" },
+  "description": "Protocolos de resolução sistemática: destravar impasses, explorar opções sem fechar cedo, e executar sem deixar pela metade.",
+  "author": {
+    "name": "Atos Lins"
+  },
   "repository": "https://github.com/atoslins/metodo",
   "license": "UNLICENSED",
-  "keywords": ["problem-solving", "impasse", "trade-study", "definition-of-done"]
+  "keywords": [
+    "problem-solving",
+    "impasse",
+    "trade-study",
+    "definition-of-done"
+  ]
 }
