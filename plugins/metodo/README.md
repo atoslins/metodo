@@ -6,7 +6,7 @@ plugins/metodo/
 │   ├── destravar/           protocolo do impasse
 │   ├── explorar-opcoes/     espaço de soluções, profundidade e decisão
 │   └── executar-completo/   livro de lacunas e portas de aceite
-├── commands/                /metodo:destravar, :opcoes, :lacunas, :fechar, :duvidar
+├── commands/                /metodo:impasse, :opcoes, :lacunas, :fechar, :duvidar
 ├── hooks/                   lembrete (UserPromptSubmit) e porta_final (Stop)
 ├── scripts/lacunas.py       CLI do livro de lacunas
 └── docs/                    PORQUE.md (o caso), FUNDAMENTOS.md (a literatura)

@@ -14,7 +14,7 @@ Três protocolos, um artefato de estado e duas portas verificadas por programa.
 | `explorar-opcoes` | há mais de um caminho; logo após achar **um** que funciona | Nenhuma opção morre por cansaço, só por prova de inferioridade |
 | `executar-completo` | aplicar um plano; antes de dizer "pronto" | Escopo aprovado é contrato; o que não foi feito aparece nomeado |
 
-Comandos: `/metodo:destravar`, `/metodo:opcoes`, `/metodo:lacunas`,
+Comandos: `/metodo:impasse`, `/metodo:opcoes`, `/metodo:lacunas`,
 `/metodo:fechar`, `/metodo:duvidar`.
 
 ## Instalação
