@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "metodo",
+  "displayName": "Método",
+  "version": "1.0.0",
+  "description": "Three protocols that stop Claude from giving up at the first obstacle, settling on the first solution that works, or delivering half the job and calling it done. Includes a gap ledger whose items only close when a command exits 0, and a Stop gate that will not let a session end silently with blocking gaps open.",
+  "author": {
+    "name": "Atos Lins",
+    "email": "atos.danielx@gmail.com",
+    "url": "https://github.com/atoslins"
+  },
+  "homepage": "https://github.com/atoslins/metodo#readme",
+  "repository": "https://github.com/atoslins/metodo",
+  "license": "MIT",
+  "keywords": [
+    "problem-solving",
+    "perseverance",
+    "impasse",
+    "trade-study",
+    "definition-of-done",
+    "verification",
+    "hooks",
+    "portuguese"
+  ]
+}

@@ -13,7 +13,7 @@
 | **Migração escrita, não aplicada** | `.sql` no repositório, banco sem a coluna | Consulta ao schema real |
 | **Deploy que não subiu** | Commit feito, container antigo | Requisição ao nosso endpoint mostrando o efeito |
 | **Caso feliz só** | Funciona no exemplo, quebra no vazio/nulo/acentuado/duplicado | Rodar as bordas: 0 itens, 1 item, item inválido |
-| **Correção do sintoma** | Erro sumiu da tela, dado errado continua circulando | Ver a skill `debug-sistematico` |
+| **Correção do sintoma** | Erro sumiu da tela, dado errado continua circulando | Tratar como bug: reproduzir e provar a causa antes de corrigir |
 | **Métrica que não mede** | Contador incrementado, nunca lido; log sem consumidor | Ler o valor pelo caminho real |
 | **Renomeação parcial** | Nome novo convivendo com o velho em metade dos lugares | `grep` dos dois nomes; contagem esperada |
 | **Configuração local** | Funciona porque a sua máquina tem a env var | Rodar limpo, sem o seu ambiente |

@@ -1,8 +1,20 @@
 {
-  "description": "metodo — mantém o livro de lacunas vivo no contexto (UserPromptSubmit) e impede encerrar em silêncio com pendência bloqueante (Stop).",
+  "description": "metodo — mantém o livro de lacunas vivo no contexto (UserPromptSubmit e depois de cada compactação) e impede encerrar em silêncio com pendência bloqueante (Stop).",
   "hooks": {
     "UserPromptSubmit": [
       {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/lembrete.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "compact",
         "hooks": [
           {
             "type": "command",

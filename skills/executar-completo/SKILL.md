@@ -52,18 +52,32 @@ O livro é um arquivo (`.metodo/lacunas.json`, espelho legível em
 `.metodo/lacunas.md`), não uma lista na conversa. Ele existe porque a conversa é
 compactada e o item esquecido some sem deixar rastro.
 
+O CLI vem com o plugin. Neste documento, `lacunas` quer dizer:
+
 ```bash
-lacunas init "Stats ao vivo por esporte"
-lacunas abrir "period_scores em destaque no tênis de mesa" --tipo bloqueia --onde frontend/StatsPanel.tsx
-lacunas abrir "gate ESPORTES_COM_STATS ainda exclui basquete"  --tipo bloqueia
-lacunas abrir "vocabulário de período usa rótulo próprio"      --tipo degrada
+python3 "${CLAUDE_PLUGIN_ROOT}/scripts/lacunas.py"
+```
+
+Se `lacunas` já estiver no PATH (o `install.sh` do repositório cria o atalho),
+use o nome curto.
+
+```bash
+lacunas init "Stats ao vivo por esporte" --pedido "<o pedido do usuário, literal>"
+lacunas abrir "period_scores em destaque no tênis de mesa" --onde frontend/StatsPanel.tsx \
+              --aceite "npm test -- StatsPanel"
+lacunas abrir "gate ESPORTES_COM_STATS ainda exclui basquete" --aceite "grep -c basquete web/gate.ts"
+lacunas abrir "vocabulário de período usa rótulo próprio" --tipo degrada
 lacunas listar
 ```
 
-Se o CLI não estiver no PATH: `python3 "${CLAUDE_PLUGIN_ROOT}/scripts/lacunas.py" ...`.
+Tipos: `bloqueia` (padrão; impede declarar pronto), `degrada` (entrega funciona
+pior), `cosmetico`. Dono: `eu` (padrão), `usuario`, `terceiro`. Registre em
+`--aceite` o comando que vai provar o item: ele vira a porta do X4.
 
-Tipos: `bloqueia` (impede declarar pronto), `degrada` (entrega funciona pior),
-`cosmetico`. Dono: `eu` (padrão), `usuario`, `terceiro`.
+Outra entrega ou outra sessão já usa o livro principal deste projeto? Abra um
+livro nomeado com `--livro <nome>` (vira `.metodo/<nome>/`) e use a mesma opção
+em todos os comandos dele. Terminada a entrega, `lacunas arquivar` guarda o livro
+como `lacunas-<data>-<título>.json` e libera o próximo.
 
 **Enumerar o N** é obrigatório antes de começar a aplicar em série:
 
@@ -90,13 +104,19 @@ Se você mudou de assunto três vezes e o livro não cresceu, o livro está ment
 
 ## X4 — Porta executável por item
 
-Um item só fecha com **comando e saída**, colados no livro. Sua avaliação de que
-"deve estar funcionando" não fecha nada — auto-verificação de agente é
-sistematicamente otimista.
+Um item só fecha com **comando e saída**. Sua avaliação de que "deve estar
+funcionando" não fecha nada — auto-verificação de agente é sistematicamente
+otimista. Por isso quem roda a prova é o CLI, não você:
 
 ```bash
-lacunas fechar L3 --prova "pytest tests/test_stats.py::test_tt_periods -q → 1 passed"
+lacunas fechar L3 --rodar "pytest tests/test_stats.py::test_tt_periods -q"
+lacunas fechar L1 --rodar          # sem valor: roda o --aceite registrado no item
 ```
+
+O CLI executa o comando, grava a saída no livro e **só fecha com exit 0**; com
+qualquer outro código, o item continua aberto e a saída aparece para você
+corrigir. `--prova "..."` fica para o que não é comando (screenshot, observação
+de um deploy) e sai marcado no relatório como *declarada, não executada*.
 
 Portas válidas por tipo de mudança:
 
