@@ -32,9 +32,10 @@ você não provou nada — você cansou.
 Na dúvida, Protocolo. Errar para o lado do rigor custa minutos; errar para o
 lado do chute devolve ao usuário uma tarefa que ele terá de reabrir.
 
-Se o obstáculo é um **bug** (algo que deveria funcionar e não funciona), use a
-skill `debug-sistematico`. Aqui tratamos do outro caso: algo que talvez nunca
-tenha existido do jeito que você imaginou.
+Se o obstáculo é um **bug** (algo que deveria funcionar e não funciona), este não
+é o protocolo: trate como depuração — reproduza, isole e prove a causa antes de
+corrigir (se houver uma skill de depuração instalada, use-a). Aqui tratamos do
+outro caso: algo que talvez nunca tenha existido do jeito que você imaginou.
 
 ## Checklist
 

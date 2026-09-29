@@ -51,12 +51,14 @@ como pronta.
 
 **1. A disciplina precisa ser verificável por um programa.** Pesquisa recente
 mostra que agentes aprovam as próprias trajetórias falhas com taxa próxima ao
-acaso. Por isso `lacunas fechar` exige `--prova` e `lacunas status` sai com
-código 1: a porta é um processo externo, não uma avaliação.
+acaso. Por isso `lacunas fechar --rodar` executa ele mesmo o comando de prova e
+só fecha com exit 0, e `lacunas status` sai com código 1: a porta é um processo
+externo, não uma avaliação.
 
 **2. O estado precisa viver fora da conversa.** Contexto é compactado; item que
 só existe na cabeça do agente some sem rastro. Por isso `.metodo/` é um
-diretório de arquivos, e um hook reinjeta o resumo do livro a cada turno.
+diretório de arquivos, e um hook reinjeta o resumo do livro a cada turno e
+depois de cada compactação.
 
 **3. O usuário não deve ser o protocolo.** No caso acima, a insistência do dono
 funcionou como cota de divergência e como auditoria de instrumento. Isso é caro
@@ -67,7 +69,7 @@ próprio agente.
 
 - Não manda insistir para sempre. Cada protocolo tem orçamento declarado e uma
   saída digna: **escalada com fronteira medida e melhor caminho já dimensionado**.
-- Não substitui `debug-sistematico`. Bug (algo que deveria funcionar e não
+- Não substitui um protocolo de depuração. Bug (algo que deveria funcionar e não
   funciona) tem protocolo próprio. Aqui tratamos de obstáculo, escolha e execução.
 - Não decide o que é do usuário. Dinheiro, risco de negócio e prioridade
   continuam sendo dele — mas chegam com as opções já dimensionadas.

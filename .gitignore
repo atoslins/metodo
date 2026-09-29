@@ -1,3 +1,4 @@
 .metodo/
 __pycache__/
 *.pyc
+evals/results/

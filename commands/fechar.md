@@ -15,7 +15,9 @@ Não declare nada pronto ainda. Rode a varredura final da skill
    foi decidido que ela não entra.
 4. **Resíduos**: TODO/FIXME/stub/instrumentação de debug no que você tocou.
 5. **Regressão**: rode a suíte relevante e cole a saída.
-6. `lacunas status` — cole a saída e o código de saída.
+6. `python3 "${CLAUDE_PLUGIN_ROOT}/scripts/lacunas.py" status` — cole a saída e o
+   código de saída. Item fechado só com `--prova` (não executada) merece uma
+   segunda olhada: dá para trocar por `--rodar`?
 
 Depois entregue o relatório no formato do SKILL.md, com as seções **Entregue**,
 **Não entregue**, **Degradações aceitas**, **Descobertas no caminho** e **Riscos**.

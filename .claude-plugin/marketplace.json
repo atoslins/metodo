@@ -1,29 +1,18 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "metodo",
-  "description": "Protocolos de resolução sistemática de problemas para o Claude Code: impasse, exploração de opções e execução completa.",
+  "description": "Método: systematic problem-solving protocols for Claude Code.",
   "owner": {
-    "name": "Atos Lins"
+    "name": "Atos Lins",
+    "email": "atos.danielx@gmail.com"
   },
   "plugins": [
     {
       "name": "metodo",
-      "source": "./plugins/metodo",
-      "description": "Três protocolos contra as falhas de perseverança de agentes: desistir cedo diante de um obstáculo, fechar a solução antes de aprofundar, e entregar pela metade. Inclui o livro de lacunas (CLI + porta no Stop).",
-      "version": "0.1.0",
+      "source": "./",
+      "description": "Three protocols against the ways coding agents fail to persevere: giving up at the first obstacle, settling on a solution too early, and delivering half the job. Ships the gap ledger (CLI + Stop gate).",
       "category": "workflow",
-      "author": {
-        "name": "Atos Lins"
-      },
-      "keywords": [
-        "problem-solving",
-        "debugging",
-        "persistencia",
-        "impasse",
-        "trade-study",
-        "definition-of-done",
-        "checklist"
-      ]
+      "homepage": "https://github.com/atoslins/metodo#readme"
     }
   ]
 }
