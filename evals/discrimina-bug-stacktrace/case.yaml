@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: discrimina-bug-stacktrace
+context:
+  scaffold_script: semente.sh

@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: negativo-renomear
+context:
+  scaffold_script: semente.sh
